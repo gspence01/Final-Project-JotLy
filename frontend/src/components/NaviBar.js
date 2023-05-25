@@ -11,7 +11,7 @@ export default function NaviBar(){
                     <Navbar.Brand href="#home">JotLy</Navbar.Brand>
                     <Nav>
                         <Button variant='outline-info'>Sign Up</Button>
-                        <Button varient='success'>Log In</Button>
+                        <Button variant='success'>Log In</Button>
                     </Nav>
                 </Container>
             </Navbar>
