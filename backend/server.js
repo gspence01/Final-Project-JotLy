@@ -14,7 +14,15 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-//LISTEN
+//ROOT
+app.get('/', (req, res) => {
+    res.redirect("/entries")
+});
 
+//CONTROLLERS
+const entriesController = require('./controllers/entry_controller')
+app.use('/entries', entriesController)
+
+//LISTEN
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}. Look at you go!`))
 
