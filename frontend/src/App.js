@@ -11,12 +11,11 @@ function App() {
   const [data, setData] = useState([])
 
   useEffect (() => {
-    let api_URL = 'http://localhost:3001/'
 
-    fetch(api_URL)
+    fetch('http://localhost:8801/')
     .then((response) => {
       if(!response.ok){
-        throw new Error("uh oh")
+        throw new Error("ERROR")
       }
       return response.json()
     })
