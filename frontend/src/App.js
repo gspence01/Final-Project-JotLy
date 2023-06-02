@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SplashPage from './components/SplashPage';
 import Home from './components/Home';
 
+import { DataContext } from './context/DataContext';
+
 function App() {
 
 
