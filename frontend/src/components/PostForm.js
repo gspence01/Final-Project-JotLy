@@ -1,4 +1,10 @@
+import Button from 'react-bootstrap/Button'
+import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+
 export default function PostForm(){
+    const navigate = useNavigate()
+
     const moodList = [
         ['Loved','FF6C6C'],
         ['Positive','FF9D6C'],
@@ -22,20 +28,60 @@ export default function PostForm(){
         ['Anxious','8A6CFF'],
         ['Overwhelmed','AC6CFF']]
 
+    const [entry, setEntry] = useState({
+        title:'',
+        date:'2001-01-01',
+        content: '',
+        user_id: 2,
+        is_private: false,
+        likes: 0,
+        feeling:''
+    })
+
+    async function handleSubmit(e){
+        e.preventDefault()
+
+        await fetch(`http://localhost:8801/entries`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entry)
+        })
+        navigate('/home')
+        console.log(entry)
+    }
+
     return (
-        <form>
-            <label htmlFor="title" placeholder="Optional">Title</label><br />
-            <input type="text" name="title"></input> <br />
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Title</label><br />
+            <input
+                type="text" 
+                name="title"
+                id="title" 
+                value={entry.title}
+                onChange={e => setEntry({...entry, title: e.target.value})} 
+            /><br />
+
             <label htmlFor="entry">Journal Entry</label><br />
-            <textarea name="entry" required style={{width:'100%'}}></textarea><br />
+            <textarea 
+                name="entry" 
+                id="entry"
+                required
+                value={entry.content}
+                onChange={e => setEntry({...entry, content: e.target.value})}
+                style={{width:'100%'}} 
+                /><br />
+
             <label htmlFor="mood">How are you feeling?</label>
-            <select name="mood">
+            <select name="mood" id="mood" value={entry.feeling} onChange={e => setEntry({...entry, feeling: e.target.value})}>
                 {
                     moodList.map((mood) => (
-                        <option style={{backgroundColor:`#${mood[1]}`}} value={mood[0]}>{mood[0]}</option>
+                        <option key={mood[0]} style={{backgroundColor:`#${mood[1]}`}} value={mood[0]}>{mood[0]}</option>
                     ))
                 }
-            </select>
+            </select> <br />
+            <Button type='submit' variant='outline-success'>Submit</Button>
         </form>
     )
 }

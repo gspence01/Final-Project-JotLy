@@ -2,7 +2,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const { Sequelize } = require('sequelize')
 
 const app = express();
 
@@ -11,15 +10,13 @@ require('dotenv').config()
 
 //MIDDLEWARE
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
-//ROOT
-app.get('/', (req, res) => {
-    res.redirect("/entries")
-});
-
 //CONTROLLERS
+app.use(express.urlencoded({extended: true}))
+
 const entriesController = require('./controllers/entry_controller')
 const usersController = require('./controllers/users_controller')
 
