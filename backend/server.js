@@ -21,7 +21,10 @@ app.get('/', (req, res) => {
 
 //CONTROLLERS
 const entriesController = require('./controllers/entry_controller')
+const usersController = require('./controllers/users_controller')
+
 app.use('/entries', entriesController)
+app.use('/users', usersController)
 
 //LISTEN
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}. Look at you go!`))
