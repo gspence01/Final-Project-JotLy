@@ -17,11 +17,9 @@ app.use(bodyParser.json());
 //CONTROLLERS
 app.use(express.urlencoded({extended: true}))
 
-const entriesController = require('./controllers/entry_controller')
-const usersController = require('./controllers/users_controller')
-
-app.use('/entries', entriesController)
-app.use('/users', usersController)
+app.use('/entries', require('./controllers/entry_controller'))
+app.use('/users', require('./controllers/users_controller'))
+app.use('/authentication', require('./controllers/authentication'))
 
 //LISTEN
 app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}. Look at you go!`))
