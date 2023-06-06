@@ -49,12 +49,12 @@ export default function Home(){
                 </Modal.Body>
             </Modal>
             <Button onClick={handleOpen} variant='info' style={
-                {height:'40px', 
-                width:'40px', 
+                {height:'50px', 
+                width:'50px', 
                 borderRadius:'50%', 
-                position:'relative', 
-                top:'50vh', 
-                left:'45vw', 
+                position:'fixed', 
+                bottom: '20px', 
+                right:'20px', 
                 fontSize:'xx-large', 
                 padding:'0px',
                 lineHeight:'30px', 

@@ -39,7 +39,7 @@ export default function PostForm(){
     })
 
     async function handleSubmit(e){
-        e.preventDefault()
+        
 
         await fetch(`http://localhost:8801/entries`, {
             method: 'POST',
