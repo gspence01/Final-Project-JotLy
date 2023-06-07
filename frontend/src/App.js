@@ -6,13 +6,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import SplashPage from './components/SplashPage';
 import Home from './components/Home';
 
-import { DataContext } from './context/DataContext';
+import CurrentUserContext from './context/CurrentUser';
 
 function App() {
 
 
   return (
-    <div className="App">
+    <CurrentUserContext className='App'>
       <Router>
         <Routes>
           <Route path='/' element={<SplashPage />}/>
@@ -20,7 +20,7 @@ function App() {
         </Routes>
       </Router>
       
-    </div>
+    </CurrentUserContext>
   );
 }
 

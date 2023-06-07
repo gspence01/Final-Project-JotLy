@@ -16,6 +16,7 @@ export default function LoginForm(){
 
         const response = await fetch(`http://localhost:8801/authentication`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
