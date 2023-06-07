@@ -30,17 +30,15 @@ export default function PostForm(){
 
     const [entry, setEntry] = useState({
         title:'',
-        date:'2001-01-01',
+        date:'',
         content: '',
-        user_id: 2,
+        user_id: '',
         is_private: false,
         likes: 0,
         feeling:''
     })
 
     async function handleSubmit(e){
-        
-
         await fetch(`http://localhost:8801/entries`, {
             method: 'POST',
             headers: {
@@ -49,11 +47,17 @@ export default function PostForm(){
             body: JSON.stringify(entry)
         })
         navigate('/home')
-        console.log(entry)
     }
 
     return (
         <form onSubmit={handleSubmit}>
+            <label htmlFor='pubPriv'>Private thit Journal Entry?</label>
+            <input 
+                type='checkbox'
+                name='pubPriv'
+                checked={entry.is_private}
+                onClick={e => setEntry({...entry, is_private: e.target.checked})} 
+            /> <br />
             <label htmlFor="title">Title</label><br />
             <input
                 type="text" 

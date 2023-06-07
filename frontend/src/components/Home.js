@@ -5,11 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import PostForm from './PostForm';
 import { DataContext } from '../context/DataContext';
 import PublicContainer from './PublicContainer';
+import { CurrentUser } from '../context/CurrentUser';
 
 
 export default function Home(){
@@ -17,6 +19,8 @@ export default function Home(){
     const [postList, setPostList] = useState([{},{}])
     const handleOpen = () => setShow(true)
     const handleClose = () => setShow(false)
+    const { currentUser } = useContext(CurrentUser)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:8801/entries')
@@ -34,12 +38,13 @@ export default function Home(){
         })
     }, [])
     
+    if(currentUser !== null){
     return (
         <div id='home-page'>
             <Navbar>
                 <Container>
-                    <Navbar.Brand>JotLy</Navbar.Brand>
-                    <Nav><p>Logged in as USER</p></Nav>
+                    <Navbar.Brand>JotLog</Navbar.Brand>
+                    <Nav><p>Logged in as <strong>{currentUser.fname}</strong></p></Nav>
                 </Container>
             </Navbar>
             <Modal show={show} onHide={handleClose}>
@@ -76,4 +81,7 @@ export default function Home(){
             </DataContext.Provider>
         </div>
     )
+} else {
+    navigate('/')
+}
 }

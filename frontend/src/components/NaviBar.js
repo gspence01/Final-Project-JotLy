@@ -4,14 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { Link, useNavigate } from 'react-router-dom';
 
 import SignupForm from './SignUpForm';
 import LoginForm from './LoginForm';
 
 export default function NaviBar(){
     //Modal setup thanks to https://react-bootstrap.netlify.app/docs/components/modal/
-    const navigate = useNavigate()
     const [showLI, setShowLI] = useState(false);
     const [showSI, setShowSI] = useState(false);
 
@@ -25,7 +23,7 @@ export default function NaviBar(){
         <>
             <Navbar>
                 <Container>
-                    <Navbar.Brand href="#home">JotLy</Navbar.Brand>
+                    <Navbar.Brand href="#home">JotLog</Navbar.Brand>
                     <Nav>
                         <Button variant='outline-info' onClick={handleOpenSI}>Sign Up</Button>
                         <Button variant='success' onClick={handleOpenLI}>Log In</Button>
