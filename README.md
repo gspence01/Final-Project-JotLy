@@ -8,4 +8,11 @@ JotLog is user authenticated, so there will be a sign-up / log-in page for users
 ## So what technologies will I be using?
 I plan to make this application PERN stack. I will use postgres and Sequelize to configure a database holding the user information, all the posts, and (if time and/or the universe permits lmao) comments.
 
-## Bugs and unfinished functionality TBD (you know there will be a lot lmao)
+## Bugs and unfinished functionality 
+Ohhh boy are there a lot of bugs in this project. 
+
+It's propbably because of how I set up the modals and different views, but when you post an entry on this app, there is a flash of the splash page. I let the form keep it's default behavior (reloading the page) on submitting as a lazy out to close out the post modal. And I think on reloading, App.js is rendering that splash page. 
+
+Furthermore, I could not figure out a way to pass data between the components in such a way that I could access the session's user_id. Because of that, I could not compare tht id with the database's entry user_id, preventing me from getting only entries that were private AND only belonged to that specific user in the Private Posts view.
+
+There was so much more functionality I wanted to add to this app, but unfortunately a career change mixed with a horribly timed depressive episode prevented me from really getting to engage with this project. I will honestly probably keep this as a side project because it may be an ugly code baby, but it's mine, a labor of love (and copious amounts of caffeine mixed with my limited understanding of software development).

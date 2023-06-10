@@ -6,7 +6,7 @@ export default function PublicContainer(){
     const data = useContext(DataContext)
 
     const posts = data.map((item, index) => {
-        if(item.is_private === false){
+        if(!item.is_private){
             return(
                 <PostCard item={item} key={index} />
             )

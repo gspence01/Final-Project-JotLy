@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import PostForm from './PostForm';
 import SplashPage from './SplashPage'
+import PrivateContainer from './PrivateContainer';
 import { DataContext } from '../context/DataContext';
 import PublicContainer from './PublicContainer';
 import { CurrentUser } from '../context/CurrentUser';
@@ -77,6 +78,7 @@ export default function Home(){
                     </Tab>
                     <Tab eventKey='yourPosts' title='Your Posts'>
                         <h1>Your Posts</h1>
+                        <PrivateContainer />
                     </Tab>
                 </Tabs>
             </DataContext.Provider>
