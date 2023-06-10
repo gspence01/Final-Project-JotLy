@@ -45,7 +45,7 @@ export default function Home(){
     if(currentUser !== null){
     return (
         <div id='home-page'>
-            <Navbar>
+            <Navbar style={{position:'sticky', top:'0px', marginBottom:'20px'}}>
                 <Container>
                     <Navbar.Brand>JotLog</Navbar.Brand>
                     <Nav><p>Logged in as <strong>{currentUser.fname}</strong></p></Nav>

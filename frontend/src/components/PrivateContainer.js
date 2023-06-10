@@ -9,7 +9,7 @@ export default function PrivateContainer(){
     
 
     const posts = data.map((item, index) => {
-        if(item.is_private && user.user_id === item.user_id){
+        if(user.user_id === item.user_id){
             return(
                 <PostCard item={item} key={index} />
             )
