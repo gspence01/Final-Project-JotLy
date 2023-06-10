@@ -29,16 +29,23 @@ entries.get('/:id', async(req, res) => {
 
 //CREATE ENTRY
 entries.post('/', async(req, res) => {
-    try {
-        const newEntry = await Entries.create(req.body)
-        res.status(200).json({
-            message: 'created',
-            data: newEntry
+    /*let currentUser;
+    try{
+        currentUser = await User.findOne({
+            where: {
+                user_id: req.session.user_id
+            }
         })
-    }
-    catch(error){
-        res.status(500).json(error)
-    }
+    } catch {
+        currentUser = null;
+    }*/
+    
+    const newEntry = await Entries.create(req.body)
+    res.status(200).json({
+        message: 'created',
+        data: newEntry
+    })
+    
 })
 
 //DELETE

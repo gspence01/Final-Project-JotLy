@@ -9,6 +9,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import PostForm from './PostForm';
+import SplashPage from './SplashPage'
 import { DataContext } from '../context/DataContext';
 import PublicContainer from './PublicContainer';
 import { CurrentUser } from '../context/CurrentUser';
@@ -50,7 +51,7 @@ export default function Home(){
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>Write an entry!</Modal.Header>
                 <Modal.Body>
-                    <PostForm />
+                    <PostForm item={currentUser}/>
                 </Modal.Body>
             </Modal>
             <Button onClick={handleOpen} variant='info' style={
@@ -82,6 +83,8 @@ export default function Home(){
         </div>
     )
 } else {
-    navigate('/')
+    return (
+        <SplashPage />
+    )
 }
 }

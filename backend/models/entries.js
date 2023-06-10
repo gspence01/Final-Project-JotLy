@@ -50,6 +50,9 @@ module.exports = (sequelize, DataTypes) => {
     feeling: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    username:{
+      type: DataTypes.STRING,
     }
   }, {
     sequelize,

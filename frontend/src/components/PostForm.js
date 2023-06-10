@@ -2,7 +2,17 @@ import Button from 'react-bootstrap/Button'
 import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-export default function PostForm(){
+export default function PostForm(props){
+
+    const currentDate = new Date()
+    const date = currentDate.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    }).replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$1-$2')
+    
+    const now = new Date(date).toISOString();
+
     const navigate = useNavigate()
 
     const moodList = [
@@ -35,16 +45,18 @@ export default function PostForm(){
         user_id: '',
         is_private: false,
         likes: 0,
-        feeling:''
+        feeling:'',
+        username: ''
     })
 
     async function handleSubmit(e){
         await fetch(`http://localhost:8801/entries`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(entry)
+            body: JSON.stringify({...entry, date: now, user_id: props.item.user_id, username: props.item.fname})
         })
         navigate('/home')
     }
