@@ -5,15 +5,17 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import Modal from 'react-bootstrap/Modal';
 import PostForm from './PostForm';
 import SplashPage from './SplashPage'
 import PrivateContainer from './PrivateContainer';
 import { DataContext } from '../context/DataContext';
 import PublicContainer from './PublicContainer';
-import { CurrentUser } from '../context/CurrentUser';
+import CurrentUserContext, { CurrentUser } from '../context/CurrentUser';
 
 
 export default function Home(){
